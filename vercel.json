@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://services.orange.eg/$1"
+    },
+    {
+      "source": "/api-merida/(.*)",
+      "destination": "https://api.meridagame.com/$1"
+    },
+    {
+      "source": "/api-balance/(.*)",
+      "destination": "https://www.orange.eg/$1"
+    }
+  ]
+}
