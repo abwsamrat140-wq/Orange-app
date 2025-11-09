@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق تفعيل عروض Orange</title>
+    <style>
+        /* يمكنك وضع أكواد الـ CSS هنا أو في ملف منفصل */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            direction: rtl;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .header {
+            background-color: #FF6600; /* Orange color */
+            color: white;
+            padding: 24px;
+        }
+        .header h1 { margin: 0; font-size: 1.5em; }
+        .header p { margin: 8px 0 0; opacity: 0.9; }
+        .dev-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            font-size: 0.9em;
+        }
+        .dev-link:hover { background: rgba(255, 255, 255, 0.3); }
+        .menu, .input-section, .loading, .result {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .menu-btn, .submit-btn {
+            background-color: #FF6600;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-btn:hover, .submit-btn:hover { background-color: #e05a00; }
+        .menu-btn.back { background-color: #6c757d; }
+        .menu-btn.back:hover { background-color: #5a6268; }
+        .input-group { width: 100%; text-align: right; }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .danone-notice {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: right;
+            font-size: 0.9em;
+            color: #594300;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #FF6600;
+            animation: spin 1s ease infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .result .success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .result .error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .result .warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>تطبيق تفعيل عروض Orange</h1>
+            <p>أهلاً بك في تطبيق تفعيل العروض واسترجاع كلمة المرور</p>
+            <a href="https://t.me/alturky_2006" class="dev-link" target="_blank" rel="noopener noreferrer">@alturky_2006</a>
+        </div>
+
+        <div class="menu" id="mainMenu">
+            <button class="menu-btn merida" data-service="merida">🚀 1000 ميجا اورانج</button>
+            <button class="menu-btn ramadan" data-service="ramadan">🚀 500 ميجا اورانج</button>
+            <button class="menu-btn fawazeer" data-service="fawazeer">🚀 250 ميجا فوازير اورانج</button>
+            <button class="menu-btn danone" data-service="danone">🚀 250 ميجا دانون (تخمين)</button>
+            <button class="menu-btn balance" data-service="balance">💰 معرفة الرصيد</button>
+            <button class="menu-btn password" data-service="password">🔑 استرجاع كلمة المرور</button>
+        </div>
+
+        <div class="input-section" id="inputSection">
+            <div id="danoneNotice" class="danone-notice" style="display: none;">
+                <strong>ملحوظة هامة ⚠️</strong><br>
+                سيقوم التطبيق بتجربة 10 أكواد عشوائية.
+            </div>
+            <div class="input-group">
+                <label id="inputLabel">رقم الهاتف</label>
+                <input type="text" id="phoneInput" placeholder="أدخل رقم الهاتف (مثال: 01012345678)">
+            </div>
+            <div class="input-group" id="passwordGroup" style="display: none;">
+                <label>كلمة المرور</label>
+                <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور">
+            </div>
+            <button class="submit-btn" id="submitBtn">تفعيل</button>
+            <button class="menu-btn back" id="backBtn">🔙 العودة للقائمة الرئيسية</button>
+        </div>
+
+        <div class="loading" id="loadingSection">
+            <div class="spinner"></div>
+            <p id="loadingText">جاري المعالجة... ⏳</p>
+        </div>
+
+        <div class="result" id="resultSection">
+            <div id="resultMessage"></div>
+            <button class="menu-btn back" id="resultBackBtn">🔙 العودة للقائمة الرئيسية</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
