@@ -1,0 +1,149 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #ff8c00, #ffb84d);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 450px;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    color: #ff6600;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.dev-link {
+    font-size: 12px;
+    color: #ff6600;
+    text-decoration: none;
+}
+
+.menu {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: #fff;
+    background: #ff6600;
+}
+
+.menu-btn:hover {
+    transform: scale(1.05);
+}
+
+.menu-btn.back {
+    background: #888;
+}
+
+.input-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ff6600;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.submit-btn:hover {
+    background: #ff5500;
+}
+
+.loading {
+    display: none;
+    margin-top: 20px;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ff6600;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.result {
+    display: none;
+    margin-top: 20px;
+}
+
+.result .success { color: green; }
+.result .error { color: red; }
+.result .warning { color: orange; }
+
+.danone-notice {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 13px;
+}

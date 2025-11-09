@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق تفعيل عروض Orange</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>تطبيق تفعيل عروض Orange</h1>
+            <p>أهلاً بك في تطبيق تفعيل العروض واسترجاع كلمة المرور</p>
+            <a href="https://t.me/alturky_2006" class="dev-link" target="_blank">@alturky_2006</a>
+        </div>
+
+        <div class="menu" id="mainMenu">
+            <button class="menu-btn merida" data-service="merida">🚀 1000 ميجا اورانج</button>
+            <button class="menu-btn ramadan" data-service="ramadan">🚀 500 ميجا اورانج</button>
+            <button class="menu-btn fawazeer" data-service="fawazeer">🚀 250 ميجا فوازير اورانج</button>
+            <button class="menu-btn danone" data-service="danone">🚀 250 ميجا دانون</button>
+            <button class="menu-btn balance" data-service="balance">💰 معرفة الرصيد</button>
+            <button class="menu-btn password" data-service="password">🔑 استرجاع كلمة المرور</button>
+        </div>
+
+        <div class="input-section" id="inputSection">
+            <div id="danoneNotice" class="danone-notice" style="display: none;">
+                <strong>ملحوظة هامة ⚠️</strong><br>
+                سيتم محاولة تفعيل الكود الذي أدخلته.
+            </div>
+            <div class="input-group">
+                <label id="inputLabel">رقم الهاتف</label>
+                <input type="text" id="phoneInput" placeholder="أدخل رقم الهاتف (مثال: 01012345678)">
+            </div>
+            <div class="input-group" id="passwordGroup" style="display: none;">
+                <label>كلمة المرور</label>
+                <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور">
+            </div>
+            
+            <div class="input-group" id="danoneCodeGroup" style="display: none;">
+                <label>كود دانون</label>
+                <input type="text" id="danoneCodeInput" placeholder="أدخل كود دانون الصالح">
+            </div>
+            <button class="submit-btn" id="submitBtn">تفعيل</button>
+            <button class="menu-btn back" id="backBtn">🔙 العودة للقائمة الرئيسية</button>
+        </div>
+
+        <div class="loading" id="loadingSection">
+            <div class="spinner"></div>
+            <p id="loadingText">جاري المعالجة... ⏳</p>
+        </div>
+
+        <div class="result" id="resultSection">
+            <div id="resultMessage"></div>
+            <button class="menu-btn back" id="resultBackBtn">🔙 العودة للقائمة الرئيسية</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
